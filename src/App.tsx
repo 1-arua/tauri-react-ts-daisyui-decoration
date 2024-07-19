@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
+import { Moon, Sun } from "lucide-react";
+
 function App() {
 	const imgs = [
 		{ href: "https://vitejs.dev", src: "/vite.svg", alt: "Vite logo" },
@@ -22,6 +24,13 @@ function App() {
 			<div className="navbar bg-base-200">
 				<div className="flex-1">
 					<p className="btn btn-ghost text-xl">Tauri Starter App</p>
+				</div>
+				<div className="flex-none">
+					<label className="swap swap-rotate">
+						<input type="checkbox" className="theme-controller" value="dim" />
+						<Sun className="swap-off" />
+						<Moon className="swap-on" />
+					</label>
 				</div>
 			</div>
 			<div className="mx-auto mt-10 max-w-xl text-center">
