@@ -59,6 +59,9 @@ function App() {
 					onSubmit={(e) => {
 						e.preventDefault();
 						greet();
+						(
+							document.getElementById("greeting_modal") as HTMLDialogElement
+						)?.showModal();
 					}}
 				>
 					<label className="input input-bordered flex items-center gap-2">
@@ -89,8 +92,15 @@ function App() {
 					</button>
 				</form>
 
-				<p>{greetMsg}</p>
-				<p>{secretGreetMsg}</p>
+				<dialog id="greeting_modal" className="modal">
+					<div className="modal-box">
+						<p className="py-4">{greetMsg}</p>
+						<p className="py-4">{secretGreetMsg}</p>
+					</div>
+					<form method="dialog" className="modal-backdrop">
+						<button type="submit">close</button>
+					</form>
+				</dialog>
 			</div>
 
 			<footer className="footer bg-base-200 text-base-content p-10">
