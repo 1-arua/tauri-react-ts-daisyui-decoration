@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
-import { Moon, Sun } from "lucide-react";
+import { CircleUserRound, Moon, Sun } from "lucide-react";
 
 function App() {
 	const imgs = [
@@ -51,18 +51,21 @@ function App() {
 				</p>
 
 				<form
-					className="flex justify-center mt-10"
 					onSubmit={(e) => {
 						e.preventDefault();
 						greet();
 					}}
 				>
-					<input
-						id="greet-input"
-						onChange={(e) => setName(e.currentTarget.value)}
-						placeholder="Enter a name..."
-						className="border-2 border-gray-300 p-2 rounded-md"
-					/>
+					<label className="input input-bordered flex items-center gap-2">
+						<CircleUserRound />
+						<input
+							type="text"
+							value={name}
+							onChange={(e) => setName(e.currentTarget.value)}
+							className="grow"
+							placeholder="Your name"
+						/>
+					</label>
 					<button
 						type="submit"
 						className="bg-blue-500 text-white rounded-md p-2 ml-2 hover:bg-blue-700"
