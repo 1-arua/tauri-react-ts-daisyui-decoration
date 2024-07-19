@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
-import { CircleUserRound, Moon, Sun } from "lucide-react";
+import { BookLock, CircleUserRound, Moon, Sun } from "lucide-react";
 
 function App() {
 	const imgs = [
@@ -12,11 +12,14 @@ function App() {
 		{ href: "https://reactjs.org", src: reactLogo, alt: "React logo" },
 	];
 	const [greetMsg, setGreetMsg] = useState("");
+	const [secretGreetMsg, setSecretGreetMsg] = useState("");
 	const [name, setName] = useState("");
+	const [secretMsg, setSecretMsg] = useState("");
 
 	async function greet() {
 		// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 		setGreetMsg(await invoke("greet", { name }));
+		setSecretGreetMsg(await invoke("secret_greet", { secretMsg }));
 	}
 
 	return (
@@ -66,6 +69,16 @@ function App() {
 							placeholder="Your name"
 						/>
 					</label>
+					<label className="input input-bordered flex items-center gap-2">
+						<BookLock />
+						<input
+							type="password"
+							value={secretMsg}
+							onChange={(e) => setSecretMsg(e.currentTarget.value)}
+							className="grow"
+							placeholder="Your secret meassage"
+						/>
+					</label>
 					<button
 						type="submit"
 						className="bg-blue-500 text-white rounded-md p-2 ml-2 hover:bg-blue-700"
@@ -75,6 +88,7 @@ function App() {
 				</form>
 
 				<p>{greetMsg}</p>
+				<p>{secretGreetMsg}</p>
 			</div>
 
 			<footer className="footer bg-base-200 text-base-content p-10">
