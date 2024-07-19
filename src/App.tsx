@@ -20,6 +20,8 @@ function App() {
 		// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 		setGreetMsg(await invoke("greet", { name }));
 		setSecretGreetMsg(await invoke("secret_greet", { secretMsg }));
+		setName("");
+		setSecretMsg("");
 	}
 
 	return (
