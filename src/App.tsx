@@ -19,6 +19,11 @@ function App() {
 
 	return (
 		<>
+			<div className="navbar bg-base-200">
+				<div className="flex-1">
+					<p className="btn btn-ghost text-xl">Tauri Starter App</p>
+				</div>
+			</div>
 			<div className="mx-auto mt-10 max-w-xl text-center">
 				<h1 className="text-4xl">Welcome to Tauri!</h1>
 
