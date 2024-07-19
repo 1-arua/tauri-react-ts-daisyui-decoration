@@ -46,7 +46,7 @@ function App() {
 					))}
 				</div>
 
-				<p className="text-center">
+				<p className="mb-4">
 					Click on the Tauri, Vite, and React logos to learn more.
 				</p>
 
