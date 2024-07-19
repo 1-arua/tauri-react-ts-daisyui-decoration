@@ -73,6 +73,28 @@ function App() {
 
 				<p>{greetMsg}</p>
 			</div>
+
+			<footer className="footer bg-base-200 text-base-content p-10">
+				<aside>
+					<img src="/icon.png" alt="1_arua icon" width={50} />
+					<p>こんにちは、ああるあです</p>
+				</aside>
+				<nav>
+					<h6 className="footer-title">Author</h6>
+					<a className="link link-hover" href="https://zenn.dev/1_arua">
+						About me
+					</a>
+				</nav>
+				<nav>
+					<h6 className="footer-title">favorites</h6>
+					<a className="link link-hover" href="https://www.kaldi.co.jp/">
+						Coffee
+					</a>
+					<a className="link link-hover" href="https://www.sentaro.co.jp/">
+						Sweets
+					</a>
+				</nav>
+			</footer>
 		</>
 	);
 }
