@@ -11,17 +11,24 @@ function App() {
 		{ href: "https://tauri.app", src: "/tauri.svg", alt: "Tauri logo" },
 		{ href: "https://reactjs.org", src: reactLogo, alt: "React logo" },
 	];
+	const visitorTypes = [
+		{ label: "new comer", value: "newcomer" },
+		{ label: "returning", value: "returning" },
+	];
+
 	const [greetMsg, setGreetMsg] = useState("");
 	const [secretGreetMsg, setSecretGreetMsg] = useState("");
 	const [name, setName] = useState("");
 	const [secretMsg, setSecretMsg] = useState("");
+	const [visitorType, setVisitorType] = useState(visitorTypes[0].value);
 
 	async function greet() {
 		// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-		setGreetMsg(await invoke("greet", { name }));
+		setGreetMsg(await invoke("greet", { name, visitorType }));
 		setSecretGreetMsg(await invoke("secret_greet", { secretMsg }));
 		setName("");
 		setSecretMsg("");
+		setVisitorType(visitorTypes[0].value);
 	}
 
 	return (
@@ -64,6 +71,20 @@ function App() {
 						)?.showModal();
 					}}
 				>
+					<p>
+						You are a
+						<select
+							className="select border-1 border-gray-300 ml-2"
+							value={visitorType}
+							onChange={(e) => setVisitorType(e.target.value)}
+						>
+							{visitorTypes.map((vt) => (
+								<option key={vt.value} value={vt.value}>
+									{vt.label}
+								</option>
+							))}
+						</select>
+					</p>
 					<label className="input input-bordered flex items-center gap-2">
 						<CircleUserRound />
 						<input

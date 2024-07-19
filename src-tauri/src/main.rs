@@ -5,8 +5,15 @@ use tauri::Error;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+fn greet(name: &str, visitor_type: &str) -> String {
+    let greet_prefix = if visitor_type == "newcomer" {
+        "Nice to meet you"
+    } else if visitor_type == "returning" {
+        "Welcome back"
+    } else {
+        panic!("Invalid visitor type")
+    };
+    format!("{}, {}! You've been greeted from Rust!", greet_prefix, name)
 }
 
 #[tauri::command]
